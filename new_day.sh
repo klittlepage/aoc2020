@@ -13,10 +13,13 @@ EOF
 cat << EOF > $MODULE/main.py
 from typing import IO
 
-def p_1(input_file: IO, debug=False):
-    pass
+def p_1(input_file: IO,
+        debug=False): # pylint: disable=unused-argument
+    return sum(is_valid(x) for x in parse(input_file))
 
-def p_2(input_file: IO, debug=False):
+
+def p_2(input_file: IO,
+        debug=False): # pylint: disable=unused-argument
     pass
 EOF
 
