@@ -1,0 +1,26 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: name-tests-test
+        args: ['--django']
+  - repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: "v1.5.4"
+    hooks:
+      - id: autopep8
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: "v2.6.0"
+    hooks:
+      - id: pylint
+  - repo: local
+    hooks:
+      - id: unittest
+        name: unittest
+        entry: python3 -m unittest discover
+        language: python
+        "types": [python]
+        pass_filenames: false
+        stages: [commit]
