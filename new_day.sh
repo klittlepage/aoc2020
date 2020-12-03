@@ -1,10 +1,8 @@
 #!/bin/bash
 
-DAY=$(printf "d%02d" $1)
+DAY=$(printf "d%02d" $2)
 MODULE=aoc/$DAY
 mkdir -p $MODULE
-mkdir -p data/$DAY/1
-mkdir -p data/$DAY/2
 
 cat << EOF > $MODULE/__init__.py
 from aoc.$DAY.main import p_1, p_2
@@ -15,7 +13,7 @@ from typing import IO
 
 def p_1(input_file: IO,
         debug=False): # pylint: disable=unused-argument
-    return sum(is_valid(x) for x in parse(input_file))
+    pass
 
 
 def p_2(input_file: IO,
@@ -31,8 +29,10 @@ from tests.aoc.test_base import BaseTestCase
 
 class TestAll(BaseTestCase):
     def test_part_one(self):
-        self.run_aoc_part($1, 1, False, aoc.$DAY.p_1)
+        self.run_aoc_part($2, False, aoc.$DAY.p_1)
 
     def test_part_two(self):
-        self.run_aoc_part($1, 2, False, aoc.$DAY.p_2)
+        self.run_aoc_part($2, False, aoc.$DAY.p_2)
 EOF
+
+python3 -m aoc.tools fetch $1 $2

@@ -6,17 +6,19 @@ repos:
       - id: check-yaml
       - id: check-merge-conflict
       - id: name-tests-test
-        args: ['--django']
+        args: ["--django"]
   - repo: https://github.com/pre-commit/mirrors-autopep8
     rev: "v1.5.4"
     hooks:
       - id: autopep8
-  - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: "v2.6.0"
-    hooks:
-      - id: pylint
   - repo: local
     hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint aoc tests
+        language: python
+        pass_filenames: false
+        stages: [commit]
       - id: unittest
         name: unittest
         entry: python3 -m unittest discover

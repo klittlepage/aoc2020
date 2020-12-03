@@ -42,7 +42,7 @@ def main():
 
     cur_path = os.path.dirname(os.path.realpath(__file__))
     data_path = os.path.join(cur_path, '..', 'data', f"d{day_formatted}",
-                             str(part), 'input.txt')
+                             'input.txt')
 
     with open(data_path, 'r', encoding='utf8') as input_file:
         res = target_method(input_file, debug=parsed_args.debug)

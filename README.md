@@ -6,7 +6,10 @@
 
 Run:
 
-`./new_day.sh [day]`
+`./new_day.sh [year] [day]`
+
+NB: you must set the `AOC_SESSION_COOKIE` environment variable to automatically
+download the day's input file.
 
 ### Linting and Testing
 
