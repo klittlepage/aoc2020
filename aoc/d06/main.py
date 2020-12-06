@@ -3,19 +3,12 @@ import operator as op
 
 from typing import Callable, IO, Iterator, List, Set
 
+import aoc.common as common
+
 
 def parse(input_file: IO) -> Iterator[List[Set[str]]]:
-    questions: List[Set[str]] = list()
-
-    for row in input_file:
-        if row == '\n':
-            yield questions
-            questions = list()
-        else:
-            questions.append((set(row.strip())))
-
-    if questions:
-        yield questions
+    yield from ([set(line) for line in chunk] for chunk in
+                common.read_chunked(input_file))
 
 
 def solve(input_file: IO,

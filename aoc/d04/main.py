@@ -1,23 +1,17 @@
+import itertools as it
 import re
 
-from typing import Dict, IO, Iterator
+from typing import cast, Dict, IO, Iterator, Tuple
+
+import aoc.common as common
 
 _REQUIRED_FIELDS = set(['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'])
 
 
 def parse(input_file: IO) -> Iterator[Dict[str, str]]:
-    passport: Dict[str, str] = dict()
-
-    for row in input_file:
-        if row == '\n':
-            yield passport
-            passport = dict()
-        else:
-            passport.update((entry.split(':')
-                             for entry in row.strip().split()))
-
-    if passport:
-        yield passport
+    yield from (dict(cast(Tuple[str, str], tuple(pair.split(':'))) for pair in
+                     it.chain(*(line.split(' ') for line in chunk))) for
+                chunk in common.read_chunked(input_file))
 
 
 def fields_present(x: Dict[str, str]) -> bool:

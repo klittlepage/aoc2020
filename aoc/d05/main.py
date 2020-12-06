@@ -4,8 +4,7 @@ from typing import Callable, IO, Iterable, List
 
 
 def parse(input_file: IO) -> Iterable[List[bool]]:
-    for line in input_file:
-        yield [x in ['B', 'R'] for x in line.strip()]
+    yield from ([x in ['B', 'R'] for x in line.strip()] for line in input_file)
 
 
 def bisect(binary_coordinates: List[bool], upper_bound: int) -> int:
