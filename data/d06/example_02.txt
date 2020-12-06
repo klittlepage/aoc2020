@@ -1,0 +1,18 @@
+part: 2
+expected: 6
+
+abc
+
+a
+b
+c
+
+ab
+ac
+
+a
+a
+a
+a
+
+b
