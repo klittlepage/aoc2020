@@ -1,3 +1,7 @@
+.PHONY: format
+format:
+	autopep8 -i -r aoc tests
+
 .PHONY: lint
 lint:
 	pylint aoc tests
