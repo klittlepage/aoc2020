@@ -6,6 +6,10 @@ def parse(input_file: IO) -> List[int]:
 
 
 def sum_to(input_list: List[int], target: int) -> Optional[Tuple[int, int]]:
+    for idx, val in enumerate(input_list):
+        if idx > 0 and val < input_list[idx-1]:
+            raise Exception('input_list must be sorted')
+
     l = 0
     r = len(input_list) - 1
     while l < r:
