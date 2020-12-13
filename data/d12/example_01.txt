@@ -1,0 +1,8 @@
+part: 1
+expected: 25
+
+F10
+N3
+F7
+R90
+F11
