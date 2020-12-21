@@ -24,5 +24,7 @@ repos:
         entry: python3 -m unittest discover
         language: python
         "types": [python]
+        additional_dependencies:
+          - ortools
         pass_filenames: false
         stages: [commit]
